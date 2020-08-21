@@ -1,9 +1,4 @@
-mydict = {}
-with open("input.txt") as f:
-    for line in f:
-        (key, val) = line.strip().split(None, 1)
-        mydict[key] = val
-
+import sys
 emblem = {
     'SPACE' : 'GORILLA',
     'LAND' : 'PANDA',
@@ -12,6 +7,7 @@ emblem = {
     'ICE' : 'MAMMOTH',
     'FIRE' : 'DRAGON'
 }
+mydict = {}
 
 key_list = list(emblem.keys())
 val_list = list(emblem.values())
@@ -46,4 +42,17 @@ def ruler():
     else:
         return 'NONE'
 
-print(ruler())
+def main():
+    input_file = sys.argv[1]
+    # sys.argv[1] should give the absolute path to the input file
+    # parse the file and process the command
+    with open(input_file) as f:
+        for line in f:
+            (key, val) = line.strip().split(None, 1)
+            mydict[key] = val
+
+    # print the output
+    print(ruler())
+
+if __name__ == "__main__":
+    main()
